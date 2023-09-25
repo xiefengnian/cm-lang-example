@@ -1,30 +1,25 @@
-import {parser} from "./syntax.grammar"
-import {LRLanguage, LanguageSupport, indentNodeProp, foldNodeProp, foldInside, delimitedIndent} from "@codemirror/language"
-import {styleTags, tags as t} from "@lezer/highlight"
+import { parser } from './syntax.grammar';
+import {
+  LRLanguage,
+  LanguageSupport,
+  indentNodeProp,
+  foldNodeProp,
+  foldInside,
+  delimitedIndent,
+} from '@codemirror/language';
+import { styleTags, tags as t } from '@lezer/highlight';
 
-export const EXAMPLELanguage = LRLanguage.define({
+export const logLanguage = LRLanguage.define({
+  name: 'log',
   parser: parser.configure({
     props: [
-      indentNodeProp.add({
-        Application: delimitedIndent({closing: ")", align: false})
-      }),
-      foldNodeProp.add({
-        Application: foldInside
-      }),
       styleTags({
-        Identifier: t.variableName,
-        Boolean: t.bool,
-        String: t.string,
-        LineComment: t.lineComment,
-        "( )": t.paren
-      })
-    ]
+        Date: t.string,
+      }),
+    ],
   }),
-  languageData: {
-    commentTokens: {line: ";"}
-  }
-})
+});
 
-export function EXAMPLE() {
-  return new LanguageSupport(EXAMPLELanguage)
+export function log() {
+  return new LanguageSupport(logLanguage);
 }

@@ -1,10 +1,11 @@
 {
-  "name": "codemirror-lang-EXAMPLE",
-  "version": "0.1.0",
-  "description": "EXAMPLE language support for CodeMirror",
+  "name": "codemirror-lang-log",
+  "version": "0.2.0",
+  "description": "log language support for CodeMirror",
   "scripts": {
-    "test": "mocha test/test.js",
-    "prepare": "rollup -c"
+    "test": "yarn prepare && mocha test/test.js",
+    "prepare": "rollup -c",
+    "build" : "yarn prepare" 
   },
   "type": "module",
   "main": "dist/index.cjs",
